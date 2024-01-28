@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    src: url(./assets/Nunito/Nunito-VariableFont_wght.ttf);
+}
+
+.font-nunito {
+    font-family: 'Nunito', system-ui;
+}
