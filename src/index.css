@@ -12,3 +12,27 @@
 .font-nunito {
     font-family: 'Nunito', system-ui;
 }
+
+@layer components {
+    .navbar-hover-effect {
+      position: relative;
+      padding-bottom: 0.25rem;
+    }
+  
+    .navbar-hover-effect::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      width: 0%;
+      background-color: rgb(216, 216, 216);
+      transition: width 0.25s ease-in-out;
+    }
+  
+    .navbar-hover-effect:hover::before {
+      width: 100%;
+    }
+  }
+  
+  
