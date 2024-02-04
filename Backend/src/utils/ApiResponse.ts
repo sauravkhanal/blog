@@ -4,23 +4,26 @@
 
 interface ApiResponse<T> {
     statusCode: number;
-    data: T;
-    message: string;
     success: boolean;
+    message: string;
+    data?: T;
 }
 
 class ApiResponse<T> {
     /**
-     * @param {Number} statusCode - The HTTP status code of the response.
+     * Constructor for ApiResponse.
+     *
+     * @param {number} statusCode - The HTTP status code of the response (default 200).
      * @param {Object} data - The data returned in the response.
-     * @param {String} [message="Success"] - The message associated with the response.
+     * @param {string} [message="Success"] - The message associated with the response (default is "Success").
      */
 
-    constructor(statusCode: number, data: T, message: string = "Success") {
+
+    constructor(statusCode: number = 200, message: string = "Success", data?: T,) {
         this.statusCode = statusCode;
-        this.data = data;
-        this.message = message
         this.success = statusCode < 400;
+        this.message = message
+        this.data = data;
     }
 
 }
