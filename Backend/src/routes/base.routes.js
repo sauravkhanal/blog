@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { baseReply } from "../controllers/base.controllers";
+import { baseReply } from "../controllers/base.controllers.js";
 
 
 const baseRouter = Router();

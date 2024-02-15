@@ -1,11 +1,4 @@
-interface ApiError<T> {
-    statusCode: number,
-    success: boolean,
-    message: string,
-    data?: T
-}
-
-class ApiError<T> {
+class ApiError {
     /**
      * Constructor for ApiError.
      *
@@ -15,7 +8,7 @@ class ApiError<T> {
      */
 
 
-    constructor(statusCode = 500, message = "Something went wrong", data?: T) {
+    constructor(statusCode = 500, message = "Something went wrong", data = {}) {
         this.statusCode = statusCode;
         this.success = false;
         this.message = message;

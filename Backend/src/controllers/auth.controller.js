@@ -1,11 +1,10 @@
-import { Request, Response } from "express"
-import ApiResponse from "../utils/ApiResponse"
-import ApiError from "../utils/ApiError"
-import { User } from "../models/user.model";
+import ApiResponse from "../utils/ApiResponse.js"
+import ApiError from "../utils/ApiError.js"
+import { User } from "../models/user.model.js";
 import bcryptjs from "bcryptjs"
 
 
-export const signup = async (req: Request, res: Response) => {
+export const signup = async (req, res) => {
     //if some element satisfy !files == not present or .trim() === empty string then throw error
     // if ([userName, email, password, firstName, lastName].some(field => !field || field.trim() === "")) {
     //     // throw new ApiError(400, "All fields are required")
@@ -51,5 +50,5 @@ export const signup = async (req: Request, res: Response) => {
     })
 
 
-    return res.status(200).json(new ApiResponse<object>(200, "signup successful", { userName: newUser.userName, email: newUser.email, userId: newUser._id }))
+    return res.status(200).json(new ApiResponse(200, "signup successful", { userName: newUser.userName, email: newUser.email, userId: newUser._id }))
 }

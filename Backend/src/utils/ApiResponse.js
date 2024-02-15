@@ -1,15 +1,4 @@
-/**
- * Represents an API response.
- */
-
-interface ApiResponse<T> {
-    statusCode: number;
-    success: boolean;
-    message: string;
-    data?: T;
-}
-
-class ApiResponse<T> {
+class ApiResponse {
     /**
      * Constructor for ApiResponse.
      *
@@ -19,7 +8,7 @@ class ApiResponse<T> {
      */
 
 
-    constructor(statusCode: number = 200, message: string = "Success", data?: T,) {
+    constructor(statusCode = 200, message = "Success", data = {}) {
         this.statusCode = statusCode;
         this.success = statusCode < 400;
         this.message = message
