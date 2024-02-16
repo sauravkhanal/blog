@@ -8,7 +8,7 @@ export default async function createPost(formData) {
         // },
       });
       const response = await res.json();
-      console.log(response);
+      return response
     } catch(error) {
       console.error(`Error occurred while uploading post: ${error}`);
     }

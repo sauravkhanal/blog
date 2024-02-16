@@ -3,17 +3,20 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import createPost from '../modules/createPost';
 import SyncLoader from "react-spinners/SyncLoader"
-
+import Modal from "../components/Modal"
 
 export default function CreatePost() {
     const [data, setData] = useState({ body: "Write your content here (required)." })
     const [coverImageUrl, setCoverImageUrl] = useState()
     const [loading, setLoading] = useState(false)
+    const [modal, setModalProp] = useState({ title: "", message: "", success: true, visible: false })
+    function toggleVisible() {
+        setModalProp((v) => ({ ...v, visible: false }))
+    }
 
     function handleSelectImage(event) {
         const file = event.target.files[0];
         if (file) {
-            console.log("what the f");
             const imageUrl = URL.createObjectURL(file);
             setCoverImageUrl(imageUrl)
         }
@@ -34,8 +37,13 @@ export default function CreatePost() {
         const formData = new FormData(form)
         formData.append("body", data.body)
         const response = await createPost(formData)
-        console.log(response)
+        setModalProp((v) => ({ ...v, visible: true, message: response.message, success: response.success }))
         setLoading(false)
+        if (response.success) {
+            event.target.reset();
+            setCoverImageUrl(null);
+            setData({body: "Write your content here (required)."})
+        }
     }
 
     return (
@@ -56,9 +64,9 @@ export default function CreatePost() {
                 </div>
                 }
                 <ReactQuill theme='snow' placeholder='post content' className='h-96 pb-12 w-full' required onChange={handleBodyChange} scrollingContainer={true} value={data.body} />
-                <button type='submit' className='btn max-w-10' disabled={loading}>{loading ? <SyncLoader color='white' loading={loading}/> : "Submit"}</button>
+                <button type='submit' className='btn max-w-10' disabled={loading}>{loading ? <SyncLoader color='white' loading={loading} /> : "Submit"}</button>
             </form>
-
+            <Modal text={modal.message} visible={modal.visible} success={modal.success} onPress={(toggleVisible)} />
         </div>
     )
 }
