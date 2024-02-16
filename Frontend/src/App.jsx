@@ -10,6 +10,7 @@ import { AuthProvider } from "./contexts/AuthContext"
 import PrivateRoute from "./components/PrivateRoute"
 import Dashboard from "./pages/Dashboard"
 import CreatePost from "./pages/CreatePost"
+import PostPage from "./pages/PostPage"
 
 export default function App() {
 	return (
@@ -28,6 +29,7 @@ export default function App() {
 								<Route path="/dashboard" element={<Dashboard/>}/>
 								<Route path="/create-post" element={<CreatePost/>}/>
 							</Route>
+							<Route path="/post/:postSlug" element={<PostPage/>}/>
 							<Route path="/*" element={<NotFound />} />
 						</Routes>
 					</div>

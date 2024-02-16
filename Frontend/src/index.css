@@ -85,3 +85,22 @@
 .ql-editor {
   font-size: 1.05rem;
 }
+
+.post-content p{
+  margin-bottom: 0.5rem;
+}
+.post-content h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: sans-serif;
+  margin: 1.5rem 0;
+}
+.post-content h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: sans-serif;
+  margin: 1rem 0;
+}
+.post-content a {
+  color: rgba(17,149,199)
+}

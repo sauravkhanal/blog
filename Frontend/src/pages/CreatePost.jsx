@@ -63,7 +63,7 @@ export default function CreatePost() {
                     <img src={coverImageUrl} className='max-w-full' />
                 </div>
                 }
-                <ReactQuill theme='snow' placeholder='post content' className='h-96 pb-12 w-full' required onChange={handleBodyChange} scrollingContainer={true} value={data.body} />
+                <ReactQuill theme='snow' placeholder='post content' className='h-96 pb-12 w-full' required onChange={handleBodyChange}/>
                 <button type='submit' className='btn max-w-10' disabled={loading}>{loading ? <SyncLoader color='white' loading={loading} /> : "Submit"}</button>
             </form>
             <Modal text={modal.message} visible={modal.visible} success={modal.success} onPress={(toggleVisible)} />
