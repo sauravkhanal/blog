@@ -16,7 +16,10 @@ export const createPost = asyncHandler(async (req, res, next) => {
         image = await uploadOnCloudinary(imageLocalPath)
     }
 
-    const slug = req.body.title.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g, '-');
+    const slug = req.body.title.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g, '');
+
+    const nameExists = await Post.findOne({slug})
+    if (nameExists) return res.status(400).json(new ApiError(400, "A post with same title already exists."))
 
     const newPost = await Post.create({
         title: req.body.title,
