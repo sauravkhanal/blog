@@ -18,7 +18,7 @@ export const createPost = asyncHandler(async (req, res, next) => {
 
     const slug = req.body.title.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g, '');
 
-    const nameExists = await Post.findOne({slug})
+    const nameExists = await Post.findOne({ slug })
     if (nameExists) return res.status(400).json(new ApiError(400, "A post with same title already exists."))
 
     const newPost = await Post.create({
@@ -70,6 +70,15 @@ export const getPost = asyncHandler(async (req, res, next) => {
         }
     }
 
-    return res.status(200).json(new ApiResponse(200, "The posts has been retrieved successfully!", response))
+    return res.status(200).json(new ApiResponse(200, "The posts have been retrieved successfully!", response))
 
+})
+
+
+export const getPostFromSlug = asyncHandler(async (req, res, next) => {
+    const slug  = req.params?.slug
+    if (!slug) return res.status(400).json(new ApiError(400, "Slug is required"))
+    const post = await Post.findOne({ slug })
+    if (!post) return res.status(404).json(new ApiResponse(404, "No posts found"));
+    return res.status(200).json(new ApiResponse(200, "Post retrieved successfully", post))
 })
