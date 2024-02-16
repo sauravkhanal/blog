@@ -21,6 +21,10 @@ const postSchema = new mongoose.Schema({
     slug: {
         type: String,
         unique: true,
+    },
+    category: {
+        type: String,
+        default: "uncategorized"
     }
 
 }, {timestamps : true})
