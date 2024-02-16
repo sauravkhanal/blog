@@ -1,15 +1,15 @@
 import { FormEvent, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import userRegister from "../modules/Register";
-import Modal from "../components/modal";
+import Modal from "../components/Modal";
 
 export default function Register() {
     const [modal, setModalProp] = useState({ title: "", message: "", success : true , visible: false })
     const navigate = useNavigate();
 
-    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    async function handleSubmit(event) {
         event.preventDefault();
-        const form = event.currentTarget as HTMLFormElement
+        const form = event.currentTarget
         const formData = new FormData(form)
 
         const urlEncodedFormData = new URLSearchParams()

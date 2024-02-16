@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
 
-interface ModalProps {
-    // title: string;
-    text?: string;
-    visible?: boolean;
-    success?: boolean;
-    onPress: Function
-}
 
-export default function Modal({ text, visible = false, success = true, onPress }: ModalProps): JSX.Element {
+export default function Modal({ text, visible = false, success = true, onPress }){
     const [modalVisible, setModalVisible] = useState(visible);
 
     useEffect(() => {

@@ -1,16 +1,16 @@
 import { FormEvent, useState } from "react";
 // import { NavLink } from "react-router-dom";
 import login from "../modules/login";
-import Modal from "../components/modal";
+import Modal from "../components/Modal";
 
 export default function Login() {
     const [modal, setModalProp] = useState({ title: "", message: "", success: true, visible: false })
     const [loading, setLoading] = useState(false)
 
 
-    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    async function handleSubmit(event) {
         event.preventDefault();
-        const form = event.currentTarget as HTMLFormElement
+        const form = event.currentTarget 
         const formData = new FormData(form)
 
         const urlEncodedFormData = new URLSearchParams()
