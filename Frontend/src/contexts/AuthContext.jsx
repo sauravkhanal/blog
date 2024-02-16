@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }) => {
         // setUserToken(null);
         localStorage.removeItem("token")
         localStorage.removeItem("userId")
-        navigate("/home")
+        navigate("/")
     }
 
     const isLoggedIn = () => Boolean(localStorage.getItem("token"))
