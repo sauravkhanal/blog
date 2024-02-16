@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import userRegister from "../modules/Register";
+import userRegister from "../modules/Register.ts";
 import Modal from "../components/Modal";
 
 export default function Register() {

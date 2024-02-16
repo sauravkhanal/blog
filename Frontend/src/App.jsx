@@ -6,24 +6,31 @@ import Header from "./components/Header"
 import NotFound from "./pages/NotFound"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
-
+import { AuthProvider } from "./contexts/AuthContext"
+import PrivateRoute from "./components/PrivateRoute"
+import Dashboard from "./pages/Dashboard"
 
 export default function App() {
 	return (
 		<BrowserRouter>
-			<div className="font-nunito bg-gray-200 dark:bg-black min-w-full min-h-svh flex flex-col pt-5 text-yellow-500">
-				<Header />
-				<div className="flex-grow flex justify-center items-center">
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="categories" element={<Categories />} />
-						<Route path="about" element={<About />} />
-						<Route path="register" element={<Register />} />
-						<Route path="login" element={<Login />} />
-						<Route path="/*" element={<NotFound />} />
-					</Routes>
+			<AuthProvider>
+				<div className="font-nunito bg-gray-200 dark:bg-black min-w-full min-h-svh flex flex-col pt-5 text-yellow-500">
+					<Header />
+					<div className="flex-grow flex justify-center items-center">
+						<Routes>
+							<Route path="/" element={<Home />} />
+							<Route path="categories" element={<Categories />} />
+							<Route path="about" element={<About />} />
+							<Route path="register" element={<Register />} />
+							<Route path="login" element={<Login />} />
+							<Route element={<PrivateRoute/>}>
+								<Route path="/dashboard" element={<Dashboard/>}/>
+							</Route>
+							<Route path="/*" element={<NotFound />} />
+						</Routes>
+					</div>
 				</div>
-			</div>
+			</AuthProvider>
 		</BrowserRouter>
 	)
 }

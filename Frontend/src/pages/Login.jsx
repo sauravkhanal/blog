@@ -1,12 +1,14 @@
 import { FormEvent, useState } from "react";
 // import { NavLink } from "react-router-dom";
-import login from "../modules/login";
+// import login from "../modules/login.ts";
 import Modal from "../components/Modal";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Login() {
     const [modal, setModalProp] = useState({ title: "", message: "", success: true, visible: false })
     const [loading, setLoading] = useState(false)
 
+    const {login} = useAuth();
 
     async function handleSubmit(event) {
         event.preventDefault();
