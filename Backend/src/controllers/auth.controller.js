@@ -8,8 +8,8 @@ import { trimObj } from "../utils/formatText.js"
 
 export const register = asyncHandler(async (req, res) => {
     let { firstName, lastName, userName, email, password } = trimObj(req.body);
-    userName = userName.toLowerCase()
-    email = email.toLowerCase()
+    userName = userName?.toLowerCase()
+    email = email?.toLowerCase()
 
     //TODO:Validate email, username 
 

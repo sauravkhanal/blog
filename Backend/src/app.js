@@ -1,12 +1,13 @@
 import express from "express"
 import cookieParser from "cookie-parser"
+import cors from "cors"
 
 const app = express();
 app.on("error", error => console.log(`Error occurred on creating express app: ${error}`))
 
 
 //middlewares
-
+app.use(cors())
 app.use(express.json());//parse JSON data
 app.use(express.urlencoded({ extended: true })); //parse form data 
 app.use(express.static("public")) //store some assets in public
