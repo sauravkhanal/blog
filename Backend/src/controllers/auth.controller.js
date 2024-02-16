@@ -94,6 +94,6 @@ export const login = asyncHandler(async (req, res) => {
     const accessToken = await generateTokens(user._id);
 
     return res.status(200).cookie("accessToken", accessToken, { httpOnly: true, secure: true }).json(
-        new ApiResponse(200, "LoginSuccessful", { userId: user._id, accessToken, userName })
+        new ApiResponse(200, "LoginSuccessful", { userName, userId: user._id, accessToken  })
     );
 });

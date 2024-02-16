@@ -1,4 +1,4 @@
-import { useState, useContext, createContext } from 'react'
+import { useState, useContext, createContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import config from '../config';
 
@@ -6,9 +6,24 @@ import config from '../config';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [token, setUserToken] = useState(null);
+    // const [userId, setUserName] = useState(null);
+    // const [token, setUserToken] = useState(null);
     const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     async function checkToken() {
+    //         const token = localStorage.getItem("token")
+    //         if (token) {
+    //             console.log("useEffect*******************************************************")
+    //             setUserToken(token)
+    //             const userId = localStorage.getItem("userId")
+    //             setUserName(userId)
+    //             console.log(token, userId)
+    //             // navigate('/dashboard')
+    //         }
+    //     }
+    //     checkToken()
+    // }, [])
 
     const login = async (formData) => {
 
@@ -33,11 +48,16 @@ export const AuthProvider = ({ children }) => {
             clearTimeout(timer)
             const responseData = await res.json();
 
-            setUser({userId: responseData.data.userId, userName: responseData.data.userName})
-            setUserToken(token)
-            localStorage.setItem("site", res.token)
-            navigate("/dashboard")
-            return true;
+            if (responseData.success) {
+                // console.log(responseData)
+                // setUserName({ userId: responseData.data.userId, userId: responseData.data.userId })
+                // setUserToken(responseData.data.accessToken)
+                localStorage.setItem("token", responseData.data.accessToken)
+                localStorage.setItem("userId", responseData.data.userId)
+                navigate("/dashboard")
+            }
+
+            return responseData
 
         } catch (error) {
             if (error.name === "AbortError") {
@@ -52,15 +72,18 @@ export const AuthProvider = ({ children }) => {
 
 
     const logout = () => {
-        setUser(null);
-        setUserToken(null);
-        localStorage.removeItem("site")
+        // setUserName(null);
+        // setUserToken(null);
+        localStorage.removeItem("token")
+        localStorage.removeItem("userId")
         navigate("/home")
     }
-    return <AuthContext.Provider value={{ user, login, logout }}>{children}</AuthContext.Provider>
+
+    const isLoggedIn = () => Boolean(localStorage.getItem("token"))
+    const getUserId = () => localStorage.getItem("userId")
+
+    return <AuthContext.Provider value={{ getUserId, isLoggedIn , login, logout }}>{children}</AuthContext.Provider>
 }
 
 
-export const useAuth = () => {
-    return useContext(AuthContext)
-}
+export const useAuth = () => useContext(AuthContext);
