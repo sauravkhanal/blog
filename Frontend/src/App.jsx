@@ -9,6 +9,7 @@ import Login from "./pages/Login"
 import { AuthProvider } from "./contexts/AuthContext"
 import PrivateRoute from "./components/PrivateRoute"
 import Dashboard from "./pages/Dashboard"
+import CreatePost from "./pages/CreatePost"
 
 export default function App() {
 	return (
@@ -25,6 +26,7 @@ export default function App() {
 							<Route path="login" element={<Login />} />
 							<Route element={<PrivateRoute/>}>
 								<Route path="/dashboard" element={<Dashboard/>}/>
+								<Route path="/create-post" element={<CreatePost/>}/>
 							</Route>
 							<Route path="/*" element={<NotFound />} />
 						</Routes>

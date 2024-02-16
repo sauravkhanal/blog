@@ -11,9 +11,10 @@ function Header() {
 				<NavLink to="/" className="px-2 py-1 rounded-none navbar-hover-effect ">Home</NavLink>
 				<NavLink to="/about" className="px-2 py-1 rounded-none navbar-hover-effect ">About</NavLink>
 				<NavLink to="/categories" className="px-2 py-1 rounded-none navbar-hover-effect ">Categories</NavLink>
-				{/* <NavLink to="/register" className="px-2 py-1 rounded-none navbar-hover-effect ">Register</NavLink> */}
-				{isLoggedIn() &&
-					<button to="/login" className="btn" onClick={logout}>logout</button>
+				{isLoggedIn() ?
+					<button className="navbar-hover-effect" onClick={logout}>Logout</button>
+					:
+					<NavLink to="/login" className="px-2 py-1 rounded-none navbar-hover-effect ">Login</NavLink>
 				}
 			</nav>
 		</nav>

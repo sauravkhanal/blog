@@ -47,7 +47,7 @@
   color: "white";
 }
 
-.input-group input, .btn {
+.input-group input, inp, .btn {
   min-width: 300px;
   border-radius: 5px;
   padding: 5px;
@@ -70,11 +70,18 @@
   border:none;
   color: white;
   font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .btn:active {
   background-color: rgba(00,69,255,0.8);
 }
 
 * {
-  overflow: hidden
+  /* overflow: hidden */
+}
+
+.ql-editor {
+  font-size: 1.05rem;
 }
