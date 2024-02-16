@@ -48,7 +48,7 @@ export default function PostPage() {
                 })}
                 &nbsp;- {Math.ceil(post.body?.length / 1000).toFixed(0)} min read
             </p>
-            <img src={post.imageUrl ? post.imageUrl : "https://www.altitudehimalaya.com/media/files/Blog/Travel-News/Kathmandu-Durbar-Square/kathmandu_durbar_dquare_attractions.png"} className='max-w-3xl self-center' />
+            <img src={post.imageURL ? post.imageURL : "https://www.altitudehimalaya.com/media/files/Blog/Travel-News/Kathmandu-Durbar-Square/kathmandu_durbar_dquare_attractions.png"} className='max-w-3xl self-center' />
             <div dangerouslySetInnerHTML={{__html: post.body}} className='post-content max-w-xl text-justify text-2xl pb-20'></div>
         </main>
 
