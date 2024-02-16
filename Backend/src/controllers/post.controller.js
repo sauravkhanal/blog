@@ -16,11 +16,14 @@ export const createPost = asyncHandler(async (req, res, next) => {
         image = await uploadOnCloudinary(imageLocalPath)
     }
 
+    const slug = req.body.title.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g, '-');
+
     const newPost = await Post.create({
         title: req.body.title,
         body: req.body.body,
         imageURL: image?.url,
-        author: req.user._id
+        author: req.user._id,
+        slug,
     })
 
     return res.status(200).json(new ApiResponse(200, "The post has been created successfully!", newPost))
