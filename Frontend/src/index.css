@@ -53,15 +53,16 @@
   padding: 5px;
   padding-left: 10px;
   height: 2.5rem;
-  /* box-sizing: border-box; */
   border: 1px solid rgb(83, 83, 83);
+  caret-color: black;
+  color: black
 }
 
 .input-group input:focus {
   outline-color: none;
-  border:none;
-  outline: 1.5px solid #000000;
-  background-color: rgb(179, 216, 249);
+  border:2px solid #4894ff;
+  outline: 1.5px solid rgba(0,0,0,0);
+  /* background-color: rgb(179, 216, 249); */
 }
 
 .btn {
