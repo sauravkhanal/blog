@@ -1,10 +1,12 @@
 import { FormEvent, useState } from "react";
-import { NavLink } from "react-router-dom";
-import register from "../modules/register";
+import { NavLink, useNavigate } from "react-router-dom";
+import userRegister from "../modules/Register";
 import Modal from "../components/modal";
 
 export default function Register() {
-    const [modal, setModalProp] = useState({ title: "", message: "", success: true, visible: false })
+    const [modal, setModalProp] = useState({ title: "", message: "", success : true , visible: false })
+    const navigate = useNavigate();
+
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const form = event.currentTarget as HTMLFormElement
@@ -12,8 +14,10 @@ export default function Register() {
 
         const urlEncodedFormData = new URLSearchParams()
         for (const [key, value] of formData.entries()) urlEncodedFormData.append(key, value.toString())
-        const response = await register(urlEncodedFormData)
+        const response = await userRegister(urlEncodedFormData)
         setModalProp((v) => ({ ...v, visible: true, message: response.message, success: response.success }))
+        if (response.success) navigate("/login")
+        
     }
 
     function toggleVisible() {
