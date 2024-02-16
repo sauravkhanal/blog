@@ -3,36 +3,77 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    src: url(./assets/Nunito/Nunito-VariableFont_wght.ttf);
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  src: url(./assets/Nunito/Nunito-VariableFont_wght.ttf);
 }
 
 .font-nunito {
-    font-family: 'Nunito', system-ui;
+  font-family: "Nunito", system-ui;
 }
 
 @layer components {
-    .navbar-hover-effect {
-      position: relative;
-      padding-bottom: 0.25rem;
-    }
-  
-    .navbar-hover-effect::before {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      height: 3px;
-      width: 0%;
-      background-color: rgb(158, 154, 154);
-      transition: width 0.25s ease-in-out;
-    }
-    
-/* .active class is added by react router into nav link when it is currently active */
-    .navbar-hover-effect.active::before, 
-    .navbar-hover-effect:hover::before {
-      width: 100%;
-    }
+  .navbar-hover-effect {
+    position: relative;
+    padding-bottom: 0.25rem;
   }
+
+  .navbar-hover-effect::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0%;
+    background-color: rgb(158, 154, 154);
+    transition: width 0.25s ease-in-out;
+  }
+
+  /* .active class is added by react router into nav link when it is currently active */
+  .navbar-hover-effect.active::before,
+  .navbar-hover-effect:hover::before {
+    width: 100%;
+  }
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.input-group label {
+  color: "white";
+}
+
+.input-group input, .btn {
+  min-width: 300px;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  height: 2.5rem;
+  /* box-sizing: border-box; */
+  border: 1px solid rgb(83, 83, 83);
+}
+
+.input-group input:focus {
+  outline-color: none;
+  border:none;
+  outline: 1.5px solid #000000;
+  background-color: rgb(179, 216, 249);
+}
+
+.btn {
+  background: #0069ff;
+  border:none;
+  color: white;
+  font-weight: 600;
+}
+.btn:active {
+  background-color: rgba(00,69,255,0.8);
+}
+
+* {
+  overflow: hidden
+}
