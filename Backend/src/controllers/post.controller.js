@@ -82,3 +82,12 @@ export const getPostFromSlug = asyncHandler(async (req, res, next) => {
     if (!post) return res.status(404).json(new ApiResponse(404, "No posts found"));
     return res.status(200).json(new ApiResponse(200, "Post retrieved successfully", post))
 })
+
+
+export const getPostFromId = asyncHandler(async (req, res, next) => {
+    const _id  = req.user?._id
+    if (!_id) return res.status(400).json(new ApiError(400, "Couldn't retrieve id"))
+    const post = await Post.find({ author: _id })
+    if (!post) return res.status(404).json(new ApiResponse(404, "No posts found"));
+    return res.status(200).json(new ApiResponse(200, "Post retrieved successfully", post))
+})

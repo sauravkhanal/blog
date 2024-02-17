@@ -25,8 +25,8 @@ app.use("/api/v1/user", userRoute)
 import authRoute from "./routes/auth.routes.js"
 app.use("/api/v1/auth", authRoute)
 
-import { verifyAccessToken } from "./middlewares/auth.middleware.js";
-app.use(verifyAccessToken)
+// import { verifyAccessToken } from "./middlewares/auth.middleware.js";
+// app.use(verifyAccessToken)
 
 import postRouter from "./routes/post.routes.js";
 app.use("/api/v1/post", postRouter)
