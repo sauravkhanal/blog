@@ -42,7 +42,7 @@ export default function CreatePost() {
         if (response.success) {
             event.target.reset();
             setCoverImageUrl(null);
-            setData({body: "Write your content here (required)."})
+            setData({ body: "Write your content here (required)." })
         }
     }
 
@@ -51,8 +51,11 @@ export default function CreatePost() {
             <h1 className='text-center text-2xl mb-5'>Create a Post</h1>
 
             <form onSubmit={handleSubmit} className='flex flex-col *:mb-5 justify-center items-center  w-full max-w-3xl p:50 input-group' >
+                <input type='text' name="title" id="title" placeholder={"title of you post"} required
+                    className='w-full flex-grow'
+                />
                 <div className='flex flex-grow-1 w-full justify-between gap-5'>
-                    <input type='text' name="title" id="title" placeholder={"title of you post"} required
+                    <input type='text' name="category" id="category" placeholder={"Category of the post"}
                         className='w-full flex-grow'
                     />
                     <label htmlFor="coverImage" className='btn max-w-20'>Choose an Image</label>
@@ -63,7 +66,7 @@ export default function CreatePost() {
                     <img src={coverImageUrl} className='max-w-full' />
                 </div>
                 }
-                <ReactQuill theme='snow' placeholder='post content' className='h-96 pb-12 w-full' required onChange={handleBodyChange} value={data.body}/>
+                <ReactQuill theme='snow' placeholder='post content' className='h-96 pb-12 w-full' required onChange={handleBodyChange} value={data.body} />
                 <button type='submit' className='btn max-w-10' disabled={loading}>{loading ? <SyncLoader color='white' loading={loading} /> : "Submit"}</button>
             </form>
             <Modal text={modal.message} visible={modal.visible} success={modal.success} onPress={(toggleVisible)} />

@@ -17,6 +17,7 @@ export const createPost = asyncHandler(async (req, res, next) => {
     }
 
     const slug = req.body.title.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g, '');
+    // const category = req.body.category?.split(' ')[0]
 
     const nameExists = await Post.findOne({ slug })
     if (nameExists) return res.status(400).json(new ApiError(400, "A post with same title already exists."))
@@ -27,6 +28,7 @@ export const createPost = asyncHandler(async (req, res, next) => {
         imageURL: image?.url,
         author: req.user._id,
         slug,
+        category: req.body.category
     })
 
     return res.status(200).json(new ApiResponse(200, "The post has been created successfully!", newPost))
