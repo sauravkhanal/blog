@@ -46,7 +46,7 @@ export default function PostPage() {
                     day: 'numeric',
                     year: 'numeric'
                 })}
-                &nbsp;- {Math.ceil(post.body?.length / 1000).toFixed(0)} min read
+                &nbsp;- {post.minutesToRead} min read
             </p>
             <img src={post.imageURL ? post.imageURL : "https://www.altitudehimalaya.com/media/files/Blog/Travel-News/Kathmandu-Durbar-Square/kathmandu_durbar_dquare_attractions.png"} className='max-w-3xl self-center' />
             <div dangerouslySetInnerHTML={{__html: post.body}} className='post-content max-w-xl text-justify text-2xl pb-20'></div>
