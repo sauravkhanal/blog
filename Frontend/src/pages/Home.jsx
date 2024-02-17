@@ -50,7 +50,7 @@ export default function Home() {
             {!posts && <p>No posts found.</p>}
 
             {pageInfo &&
-                <div className="flex flex-row text-white self-center gap-7 my-10">
+                <div className="flex flex-row text-black dark:text-white self-center gap-7 my-10 text-xl">
                     <button disabled={(page === 1)} onClick={()=>setPage(page=>--page)} className="disabled:opacity-50">Prev </button>
                     <p>{pageInfo.currentPage} / {pageInfo.totalPages}</p>
                     <button disabled={!pageInfo.hasNextPage} onClick={()=>setPage(page=>++page)} className="disabled:opacity-50">Next</button>

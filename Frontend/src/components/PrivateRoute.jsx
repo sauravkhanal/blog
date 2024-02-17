@@ -5,5 +5,5 @@ import { useAuth } from '../contexts/AuthContext';
 export default function PrivateRoute() {
     const { isLoggedIn } = useAuth();
     if (isLoggedIn()) return <Outlet />
-    else return <Navigate to="/categories" />
+    else return <Navigate to="/posts" />
 }

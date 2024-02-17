@@ -32,10 +32,11 @@ export default function PostPage() {
     }, [postSlug])
 
     if (isLoading) {
-        return <PacmanLoader color='#0055AA' />
+        return <div className='min-h-screen flex flex-col justify-center'><PacmanLoader color='white' /></div>
+
     }
     else if (error || !post) {
-        return <main><h1>Post with title "{postSlug.replace("-", " ")}" doesn't exist.</h1></main>
+        return <main className='min-h-screen mx-10'><h1>Post with title "{postSlug.replace("-", " ")}" doesn't exist.</h1></main>
     }
     else
         return <main className=' max-w-3xl min-h-screen flex flex-col mx-auto items-center gap-10 pt-10 dark:text-gray-100 text-slate-950'>
@@ -48,8 +49,11 @@ export default function PostPage() {
                 })}
                 &nbsp;- {post.minutesToRead} min read
             </p>
-            <img src={post.imageURL ? post.imageURL : "https://www.altitudehimalaya.com/media/files/Blog/Travel-News/Kathmandu-Durbar-Square/kathmandu_durbar_dquare_attractions.png"} className='max-w-3xl self-center' />
-            <div dangerouslySetInnerHTML={{__html: post.body}} className='post-content max-w-xl text-justify text-2xl pb-20'></div>
+            <img
+                src={post.imageURL ? post.imageURL : "https://www.altitudehimalaya.com/media/files/Blog/Travel-News/Kathmandu-Durbar-Square/kathmandu_durbar_dquare_attractions.png"}
+                className=' self-center w-xs'
+            />
+            <div dangerouslySetInnerHTML={{ __html: post.body }} className='post-content max-w-xl text-justify text-2xl pb-20'></div>
         </main>
 
 

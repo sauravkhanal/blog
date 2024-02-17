@@ -22,7 +22,7 @@ export default function App() {
 					<div className="flex-grow flex justify-center items-center">
 						<Routes>
 							<Route path="/" element={<Home />} />
-							<Route path="categories" element={<Categories />} />
+							{/* <Route path="categories" element={<Categories />} /> */}
 							<Route path="about" element={<About />} />
 							<Route path="register" element={<Register />} />
 							<Route path="login" element={<Login />} />
@@ -34,7 +34,7 @@ export default function App() {
 							<Route path="/*" element={<NotFound />} />
 						</Routes>
 					</div>
-					<Footer/>
+					{/* <Footer/> */}
 				</div>
 			</AuthProvider>
 		</BrowserRouter>
