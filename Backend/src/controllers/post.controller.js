@@ -58,7 +58,7 @@ export const getPost = asyncHandler(async (req, res, next) => {
         return res.json(new ApiResponse(200, "No items found on this page", { userContribution: [], pageInfo: { totalItems: count, totalPages, currentPage: page, hasNextPage: false } }));
     }
 
-    const posts = await Post.find().skip((page - 1) * limit).limit(limit)
+    const posts = await Post.find().sort({createdAt: -1}).skip((page - 1) * limit).limit(limit)
 
     const response = {
         posts,
