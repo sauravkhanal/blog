@@ -25,10 +25,22 @@ const postSchema = new mongoose.Schema({
     category: {
         type: String,
         default: "uncategorized"
+    },
+    minutesToRead: {
+        type: Number,
+        default: 2
     }
 
 }, {timestamps : true})
 
+
+postSchema.pre('save', function (next) {
+    const wordsPerMinute = 500;
+    const words = this.body?.length;
+    const minutes = Math.ceil(words/wordsPerMinute);
+    this.minutesToRead = minutes;
+    next();
+})
 
 const Post = mongoose.model("Post", postSchema)
 export default Post
