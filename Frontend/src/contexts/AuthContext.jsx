@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
                 // setUserToken(responseData.data.accessToken)
                 localStorage.setItem("token", responseData.data.accessToken)
                 localStorage.setItem("userId", responseData.data.userId)
-                navigate("/dashboard")
+                navigate("/create-post")
             }
 
             return responseData

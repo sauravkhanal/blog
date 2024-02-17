@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
 function DrawerToggle() {
-    const {isLoggedIn} = useAuth()
+    const { isLoggedIn, logout } = useAuth()
     const [isDrawerOpen, setISDrawerOpen] = useState(false)
     const toggleDrawer = () => {
         setISDrawerOpen(previousState => !previousState)
@@ -27,12 +27,15 @@ function DrawerToggle() {
             >
                 <div className='flex flex-col grow justify-center pl-8 space-y-2 align-middle text-lg bg-light dark:bg-slate-900' >
                     <NavLink to="/" className="px-2 py-1 rounded-none navbar-hover-effect ">Posts</NavLink>
-                    <NavLink to="/about" className="px-2 py-1 rounded-none navbar-hover-effect ">About</NavLink>
-                    {/* <NavLink to="/categories" className="px-2 py-1 rounded-none navbar-hover-effect ">Categories</NavLink> */}
                     {isLoggedIn() ?
-                        <button className="navbar-hover-effect" onClick={logout}>Logout</button>
-                        :
-                        <NavLink to="/login" className="px-2 py-1 rounded-none navbar-hover-effect ">Login</NavLink>
+                        <>
+                            <NavLink to="/create-post" className="px-2 py-1 rounded-none navbar-hover-effect ">Create post</NavLink>
+                            <button className="rounded-none navbar-hover-effect" onClick={logout}>Logout</button>
+                        </>
+                        : <>
+                            <NavLink to="/about" className="px-2 py-1 rounded-none navbar-hover-effect ">About</NavLink>
+                            <NavLink to="/login" className="px-2 py-1 rounded-none navbar-hover-effect ">Login</NavLink>
+                        </>
                     }
                 </div>
 

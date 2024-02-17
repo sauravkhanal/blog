@@ -17,7 +17,7 @@ export default function App() {
 	return (
 		<BrowserRouter>
 			<AuthProvider>
-				<div className="font-nunito bg-gray-200 dark:bg-black min-w-full min-h-svh flex flex-col pt-5 text-yellow-500">
+				<div className="font-nunito bg-gray-200 dark:bg-black min-w-full min-h-svh flex flex-col pt-5 text-black dark:text-white">
 					<Header />
 					<div className="flex-grow flex justify-center items-center">
 						<Routes>

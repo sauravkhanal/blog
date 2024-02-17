@@ -40,7 +40,7 @@ export default function PostPage() {
     }
     else
         return <main className=' max-w-3xl min-h-screen flex flex-col mx-auto items-center gap-10 pt-10 dark:text-gray-100 text-slate-950'>
-            <h1 className='text-3xl text-center font-serif tracking-widest border-b border-slate-300 pb-5'>{post.title && post.title.toUpperCase()}</h1>
+            <h1 className='text-3xl text-center font-serif tracking-widest border-b border-slate-300 pb-5 p-5'>{post.title && post.title.toUpperCase()}</h1>
             <p className='self-end pr-5'>
                 {new Date(post.createdAt).toLocaleDateString('en-US', {
                     month: 'short',
@@ -53,7 +53,7 @@ export default function PostPage() {
                 src={post.imageURL ? post.imageURL : "https://www.altitudehimalaya.com/media/files/Blog/Travel-News/Kathmandu-Durbar-Square/kathmandu_durbar_dquare_attractions.png"}
                 className=' self-center w-xs'
             />
-            <div dangerouslySetInnerHTML={{ __html: post.body }} className='post-content max-w-xl text-justify text-2xl pb-20'></div>
+            <div dangerouslySetInnerHTML={{ __html: post.body }} className='post-content max-w-xl text-justify text-2xl pb-15 px-5'></div>
         </main>
 
 
