@@ -17,7 +17,7 @@ export default function Home() {
         async function getPosts() {
             try {
                 setLoading(true)
-                const res = await fetch(`/api/v1/post?page=${page}&limit=${limit}`)
+                const res = await fetch(`https://api.blog.khanalsaurav.com.np/api/v1/post?page=${page}&limit=${limit}`)
                 const response = await res.json()
                 if (!res.ok) {
                     setError(true)

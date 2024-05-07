@@ -12,7 +12,7 @@ export default function PostPage() {
         async function getPost() {
             try {
                 setISLoading(true)
-                const res = await fetch(`/api/v1/post/${postSlug}`)
+                const res = await fetch(`https://api.blog.khanalsaurav.com.np/api/v1/post/${postSlug}`)
                 const response = await res.json()
 
                 if (!res.ok) {

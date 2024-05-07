@@ -1,6 +1,6 @@
 export default async function createPost(formData) {
     try {
-      const res = await fetch("/api/v1/post", {
+      const res = await fetch("https://api.blog.khanalsaurav.com.np/api/v1/post", {
         method: "POST",
         body: formData,
         // headers: {
