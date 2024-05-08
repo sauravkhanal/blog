@@ -20,7 +20,7 @@ export default function Modal({ text, visible = false, success = true, onPress }
     return (
         <>
             {modalVisible && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80" onClick={handleClose}>
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-10" onClick={handleClose}>
                     <div className="bg-white p-6 rounded-md flex flex-col justify-center max-w-xs">
                         {/* <h1 className="text-black text-2xl pb-5">{(success? "Success": "Failure")}</h1> */}
                         <p className="text-black text-xl text-center">{text}</p>
