@@ -4,6 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import createPost from '../modules/createPost';
 import SyncLoader from "react-spinners/SyncLoader"
 import Modal from "../components/Modal"
+import TinyMce from "../components/TinyMCE"
 
 export default function CreatePost() {
     const [data, setData] = useState({ body: "Write your content here (required)." })
@@ -66,8 +67,9 @@ export default function CreatePost() {
                     <img src={coverImageUrl} className='max-w-full' />
                 </div>
                 }
-                <ReactQuill theme='snow' placeholder='post content' className='h-96 pb-12 w-full' required onChange={handleBodyChange} value={data.body} />
-                <button type='submit' className='btn max-w-10' disabled={loading}>{loading ? <SyncLoader color='white' loading={loading} /> : "Submit"}</button>
+                {/* <ReactQuill theme='snow' placeholder='post content' className='h-96 pb-12 w-full' required onChange={handleBodyChange} value={data.body} /> */}
+                <TinyMce setData={setData} loading={loading}/>
+                {/* <button type='submit' className='btn max-w-10' disabled={loading}>{loading ? <SyncLoader color='white' loading={loading} /> : "Submit"}</button> */}
             </form>
             <Modal text={modal.message} visible={modal.visible} success={modal.success} onPress={(toggleVisible)} />
         </div>
