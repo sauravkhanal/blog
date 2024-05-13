@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
                 controller.abort();
             }, 30000)
 
-            const res = await fetch("https://api.blog.khanalsaurav.com.np/api/v1/auth/login", {
+            const res = await fetch(`${config.API_ENDPOINT}/auth/login`, {
                 method: "POST",
                 body: formData.toString(),
                 headers: {

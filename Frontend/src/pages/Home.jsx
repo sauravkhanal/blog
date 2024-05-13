@@ -1,6 +1,7 @@
 import Card from "../components/Card"
 import { useEffect, useState } from "react";
 import PacmanLoader from "react-spinners/PacmanLoader";
+import config from "../config";
 
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
         async function getPosts() {
             try {
                 setLoading(true)
-                const res = await fetch(`https://api.blog.khanalsaurav.com.np/api/v1/post?page=${page}&limit=${limit}`)
+                const res = await fetch(`${config.API_ENDPOINT}/post?page=${page}&limit=${limit}`)
                 const response = await res.json()
                 if (!res.ok) {
                     setError(true)

@@ -1,11 +1,14 @@
+import config from "../config";
+
 export default async function createPost(formData) {
     try {
-      const res = await fetch("https://api.blog.khanalsaurav.com.np/api/v1/post", {
+      const res = await fetch(`${config.API_ENDPOINT}/post`, {
         method: "POST",
         body: formData,
-        // headers: {
-        //     "Content-Type": "multipart/form-data",
-        // },
+        headers: {
+            "Authorization": localStorage.getItem('token'),
+            // "Bearer": "This is bearer value"
+        },
       });
       const response = await res.json();
       return response

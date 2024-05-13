@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import PacmanLoader from "react-spinners/PacmanLoader"
+import config from '../config'
 
 export default function PostPage() {
     const { postSlug } = useParams()
@@ -12,7 +13,7 @@ export default function PostPage() {
         async function getPost() {
             try {
                 setISLoading(true)
-                const res = await fetch(`https://api.blog.khanalsaurav.com.np/api/v1/post/${postSlug}`)
+                const res = await fetch(`${config.API_ENDPOINT}/post/${postSlug}`)
                 const response = await res.json()
 
                 if (!res.ok) {
