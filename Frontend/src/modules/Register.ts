@@ -11,7 +11,7 @@ export default async function userRegister(data: URLSearchParams) {
             controller.abort();
         }, 30000)
 
-        const res = await fetch(config.REGISTER_API_ENDPOINT, {
+        const res = await fetch(config.API_ENDPOINT + "/auth/register", {
             method: "POST",
             body: data.toString(),
             headers: {

@@ -11,7 +11,7 @@ export default async function login(data: URLSearchParams) {
             controller.abort();
         }, 30000)
 
-        const res = await fetch(config.LOGIN_API_ENDPOINT, {
+        const res = await fetch(config.API_ENDPOINT + "/auth/login", {
             method: "POST",
             body: data.toString(),
             headers: {
