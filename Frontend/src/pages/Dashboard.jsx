@@ -8,11 +8,12 @@ export default function Dashboard() {
 		(async function () {
 			const myPosts = await fetchMyBlogs();
 			setPosts(myPosts);
+			// console.log("my posts: " + posts)
 		})();
 	}, []);
 	return (
 		<>
-			{posts ? (
+			{(posts?.length >= 1) ? (
 				<div className=" rounded-md  max-w-2xl px-2 py-5">
 					<p className="my-5 text-2xl font-bold">My Posts</p>
 					{
