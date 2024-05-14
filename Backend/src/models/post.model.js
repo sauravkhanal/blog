@@ -29,6 +29,10 @@ const postSchema = new mongoose.Schema({
     minutesToRead: {
         type: Number,
         default: 2
+    },
+    deleted: {
+        type: Boolean,
+        default: false
     }
 
 }, {timestamps : true})
