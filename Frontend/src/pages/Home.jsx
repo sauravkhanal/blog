@@ -1,6 +1,6 @@
 import Card from "../components/Card"
 import { useEffect, useState } from "react";
-import PacmanLoader from "react-spinners/PacmanLoader";
+import Loader from "react-spinners/ClipLoader"
 import config from "../config";
 
 
@@ -37,7 +37,7 @@ export default function Home() {
     }, [page])
 
 
-    if (loading) return <PacmanLoader color="white" />
+    if (loading) return <Loader color="white" />
 
     else if (error) { console.log(error); return <p>An error occurred!</p> }
 

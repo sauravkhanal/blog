@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import PacmanLoader from "react-spinners/PacmanLoader"
+import Loader from "react-spinners/ClipLoader"
 import config from '../config'
 
 export default function PostPage() {
@@ -33,7 +33,7 @@ export default function PostPage() {
     }, [postSlug])
 
     if (isLoading) {
-        return <div className='min-h-screen flex flex-col justify-center'><PacmanLoader color='white' /></div>
+        return <div className='min-h-screen flex flex-col justify-center'><Loader color='white' /></div>
 
     }
     else if (error || !post) {
