@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import createPost from '../modules/createPost';
-import SyncLoader from "react-spinners/SyncLoader"
 import Modal from "../components/Modal"
 import TinyMce from "../components/TinyMCE"
 
