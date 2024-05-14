@@ -60,7 +60,7 @@ export const getPost = asyncHandler(async (req, res, next) => {
         return res.json(new ApiResponse(200, "No items found on this page", { userContribution: [], pageInfo: { totalItems: count, totalPages, currentPage: page, hasNextPage: false } }));
     }
 
-    const posts = await Post.find().sort({createdAt: -1}).skip((page - 1) * limit).limit(limit)
+    const posts = await Post.find({ $or: [{ deleted: { $exists: false } }, { deleted: false }] }).sort({createdAt: -1}).skip((page - 1) * limit).limit(limit)
 
     const response = {
         posts,
@@ -89,7 +89,7 @@ export const getPostFromSlug = asyncHandler(async (req, res, next) => {
 export const getPostFromId = asyncHandler(async (req, res, next) => {
     const _id  = req.user?._id
     if (!_id) return res.status(400).json(new ApiError(400, "Couldn't retrieve id"))
-    const post = await Post.find({ author: _id })
+    const post = await Post.find({ author: _id, deleted:false }).sort({createdAt: -1})
     if (!post) return res.status(404).json(new ApiResponse(404, "No posts found"));
     return res.status(200).json(new ApiResponse(200, "Post retrieved successfully", post))
 })
