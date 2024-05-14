@@ -16,7 +16,7 @@ export default function Dashboard() {
 				<div className=" rounded-md  max-w-2xl px-2 py-5">
 					<p className="my-5 text-2xl font-bold">My Posts</p>
 					{
-						posts.slice().reverse().map((value, index) => <MyPostCard post={value} key={value.slug} />)
+						posts.map((value, index) => <MyPostCard post={value} key={value.slug} />)
 					}
 				</div>
 			) : (
