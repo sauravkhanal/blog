@@ -96,13 +96,40 @@ export const getPostFromId = asyncHandler(async (req, res, next) => {
 
 
 export const deletePostFromId = asyncHandler(async (req, res, next) => {
-    const _id  = req.params?.id;
-    if (!_id) return res.status(400).json(new ApiError(400, "Slug is required"))
-    const post = await Post.findOne({ _id })
+    const user_id = req.user?._id
+    const post_id  = req.params?.id;
+
+    if (!post_id) return res.status(400).json(new ApiError(400, "id is required."))
+    const post = await Post.findOne({ _id: post_id })
+    
+    if (post.deleted) {
+        return res.status(400).json(new ApiError(400, "Post already deleted."))
+    }
+
+    if (post.author.toString() != user_id) {
+        return res.status(401).json(new ApiError(401, "user not authorized to delete the post."))
+    }
 
     post.deleted = true;
     await post.save();
 
     if (!post) return res.status(404).json(new ApiResponse(404, "No posts found with given id"));
     return res.status(200).json(new ApiResponse(200, "Post deleted successfully", post))
+})
+
+
+export const recoverPostFromId = asyncHandler(async (req, res, next) => {
+    const user_id = req.user?._id
+    const post_id  = req.params?.id;
+    if (!post_id) return res.status(400).json(new ApiError(400, "id is required"))
+    const post = await Post.findOne({ post_id })
+
+    if (post.author !== user_id) {
+        return res.status(401).json(new ApiError(401, "user not authorized to recover the post."))
+    }
+    post.deleted = false;
+    await post.save();
+
+    if (!post) return res.status(404).json(new ApiResponse(404, "No posts found with given id"));
+    return res.status(200).json(new ApiResponse(200, "Post recovered successfully", post))
 })
