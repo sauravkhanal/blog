@@ -25,11 +25,12 @@ function DrawerToggle() {
                 direction='left'
                 lockBackgroundScroll='true'
             >
-                <div className='flex flex-col grow justify-center pl-8 space-y-2 align-middle text-lg bg-light dark:bg-slate-900' >
+                <div className='flex flex-col grow justify-center pl-8 space-y-2 align-middle text-lg bg-light dark:bg-black opacity-90' >
                     <NavLink to="/" className="px-2 py-1 rounded-none navbar-hover-effect ">Posts</NavLink>
                     {isLoggedIn() ?
                         <>
                             <NavLink to="/create-post" className="px-2 py-1 rounded-none navbar-hover-effect ">Create post</NavLink>
+                            <NavLink to="/dashboard" className="px-2 py-1 rounded-none navbar-hover-effect ">Dashboard</NavLink>
                             <button className="rounded-none navbar-hover-effect" onClick={logout}>Logout</button>
                         </>
                         : <>
