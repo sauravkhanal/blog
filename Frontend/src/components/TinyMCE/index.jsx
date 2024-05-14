@@ -24,8 +24,8 @@ export default function TinyMCE({ setData, loading }) {
 					width: "100%",
 					max_width: 768,
 					min_height: 300,
+					max_height: 850,
 					resize: true,
-
 					menubar: true,
 					plugins: [
 						"advlist",
