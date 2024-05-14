@@ -15,6 +15,7 @@ function Header() {
 				{isLoggedIn() ?
 				<>	
 					<NavLink to="/create-post" className="px-2 py-1 rounded-none navbar-hover-effect ">Create post</NavLink>
+					<NavLink to="/dashboard" className="px-2 py-1 rounded-none navbar-hover-effect ">Dashboard</NavLink>
 					<button className="navbar-hover-effect" onClick={logout}>Logout</button>
 				</>
 					:<>
