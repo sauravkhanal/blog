@@ -1,11 +1,11 @@
 import express from "express"
-// import cookieParser from "cookie-parser"
+import cookieParser from "cookie-parser"
 import cors from "cors"
 
 const app = express();
 app.on("error", error => console.log(`Error occurred on creating express app: ${error}`))
 
-// app.use(cookieParser())//parse cookies(access token)
+app.use(cookieParser())//parse cookies(access token)
 
 //middlewares
 // app.use(cors({
